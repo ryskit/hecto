@@ -11,7 +11,7 @@ pub struct Size {
 
 pub struct Terminal {
     size: Size,
-    _stdout: RawTerminal<std::io::Stdout>
+    _stdout: RawTerminal<std::io::Stdout>,
 }
 
 impl Terminal {
@@ -50,5 +50,17 @@ impl Terminal {
                 return key;
             }
         }
+    }
+
+    pub fn cursor_hide() {
+        print!("{}", termion::cursor::Hide);
+    }
+
+    pub fn cursor_show() {
+        print!("{}", termion::cursor::Show);
+    }
+
+    pub fn clear_current_line() {
+        print!("{}", termion::clear::CurrentLine);
     }
 }
